@@ -96,5 +96,6 @@ Sample query-to-response outputs and five full agent traces are in [`results/tra
 6. **Near-duplicate-aware evaluation**, to measure generalisation to genuinely new wording.
 
 ## Team
+Jackers: Jaya Mishra and Shivansh
 
 <!-- Add names. -->
