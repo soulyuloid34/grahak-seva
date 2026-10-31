@@ -110,7 +110,7 @@ ss.setdefault("history", [])   # every trace, newest first
 ss.setdefault("chat", [])      # chat entries (user, text, trace), oldest first
 # conversation waiting for the customer's answer
 ss.setdefault("pending", None)
-ss.setdefault("threshold", 0.7)
+ss.setdefault("threshold", 0.8)
 ss.setdefault("store", S.DEFAULT_STORE)
 ss.setdefault("lang", "en")      # en / hi / bn / ta / te / mr
 # store id -> its saved chat / history / pending conversation
@@ -158,6 +158,8 @@ SIDEBAR_CSS = """
 [data-testid="stSidebar"] .stButton > button p { font-size:1.08rem; margin:0; }
 [data-testid="stSidebar"] [data-testid="stVerticalBlock"] { gap:.75rem !important; }   /* space between store buttons */
 [data-testid="stSidebar"] .stButton { margin-bottom:.15rem; }
+[data-testid="stSidebar"] [data-baseweb="select"] > div { background:#fff !important; border-radius:14px; }
+[data-testid="stSidebar"] [data-baseweb="select"] * { color:#432f2e !important; }
 [data-testid="stSidebar"] [data-testid="stSelectbox"] label p { font-size:.95rem; }
 .gs-nav { left:262px !important; }
 @media (max-width:1000px) { .gs-nav { left:0 !important; } }
@@ -168,17 +170,20 @@ SIDEBAR_CSS = """
 .gs-contact a { color:#432f2e !important; text-decoration:underline; }
 .gs-contact .cap { font-size:.88rem; opacity:.7; margin-top:.5rem; }
 a.gs-pill { display:inline-block; background:#432f2e; color:#feefb8 !important; border-radius:999px; padding:.55rem 1.3rem; text-decoration:none !important; font-size:1.02rem; }
-/* ---- language dropdown: white box, brown text (one block, works on old and new Streamlit) ---- */
-html body [data-testid="stSidebar"] [data-testid="stSelectbox"] :is([data-baseweb="select"] > div, div[role="group"]) {
-  background:#fff !important; border:1.5px solid #e4d7c4 !important; border-radius:14px !important; box-shadow:none !important; }
-html body [data-testid="stSidebar"] [data-testid="stSelectbox"] :is([data-baseweb="select"] *, div[role="group"] *) {
-  color:#432f2e !important; -webkit-text-fill-color:#432f2e !important; caret-color:#432f2e !important; opacity:1 !important; font-size:1.05rem; }
-html body [data-testid="stSidebar"] [data-testid="stSelectbox"] svg { fill:#432f2e !important; color:#432f2e !important; }
-html body [data-testid="stSidebar"] [data-testid="stSelectbox"] input::placeholder { color:#8a7776 !important; -webkit-text-fill-color:#8a7776 !important; opacity:1 !important; }
-/* the opened list: white too, brown text, butter highlight (old and new Streamlit) */
-[data-testid="stSelectboxVirtualDropdown"], [data-baseweb="popover"] ul[role="listbox"] { background:#fff !important; }
-[role="option"], [role="option"] *, [data-baseweb="popover"] li, [data-baseweb="popover"] li * { color:#432f2e !important; -webkit-text-fill-color:#432f2e !important; }
-[role="option"]:hover, [role="option"][aria-selected="true"], [data-baseweb="popover"] li:hover, [data-baseweb="popover"] li[aria-selected="true"] { background:#feefb8 !important; }
+[data-testid="stSidebar"] [data-baseweb="select"] > div { background:#fffbea !important; border-color:#eadfd0 !important; }
+[data-testid="stSidebar"] [data-baseweb="select"] div,
+[data-testid="stSidebar"] [data-baseweb="select"] span,
+[data-testid="stSidebar"] [data-baseweb="select"] input { color:#432f2e !important; -webkit-text-fill-color:#432f2e !important; caret-color:#432f2e !important; }
+[data-testid="stSidebar"] [data-baseweb="select"] input::placeholder { color:#8a7776 !important; opacity:1 !important; }
+[data-testid="stSidebar"] [data-baseweb="select"] svg { fill:#432f2e !important; }
+[data-testid="stSidebar"] [data-baseweb="select"] * { -webkit-text-fill-color:#432f2e !important; }
+[data-testid="stSidebar"] [data-baseweb="select"] input, [data-testid="stSidebar"] [data-baseweb="select"] [value], [data-testid="stSidebar"] [data-baseweb="select"] span { opacity:1 !important; }
+[data-baseweb="popover"] ul[role="listbox"] { background:#64cfd9 !important; }
+[data-baseweb="popover"] li, [data-baseweb="popover"] li * { color:#432f2e !important; }
+[data-baseweb="popover"] li:hover, [data-baseweb="popover"] li[aria-selected="true"] { background:#feefb8 !important; }
+html body [data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] *,
+html body [data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] input { color:#432f2e !important; -webkit-text-fill-color:#432f2e !important; caret-color:#432f2e !important; opacity:1 !important; }
+html body [data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] svg { fill:#432f2e !important; }
 </style>
 """
 
@@ -836,7 +841,7 @@ ss.setdefault("history", [])   # every trace, newest first
 ss.setdefault("chat", [])      # chat entries (user, text, trace), oldest first
 # conversation waiting for the customer's answer
 ss.setdefault("pending", None)
-ss.setdefault("threshold", 0.7)
+ss.setdefault("threshold", 0.8)
 
 # sample-question chips: picked from validation.csv and checked against the agents by make_dashboard_data.py
 EXAMPLES = ([e["text"] for e in STORE_DATA.get(ss.store, {}).get("examples", [])[:5]]
