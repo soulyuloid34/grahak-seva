@@ -1,0 +1,50 @@
+[
+  {
+    "text": "How to demand a compensation of my money?",
+    "intent": "get_refund",
+    "category": "REFUND",
+    "confidence": 0.99
+  },
+  {
+    "text": "Where could I retrieve my profile access key?",
+    "intent": "recover_password",
+    "category": "ACCOUNT",
+    "confidence": 0.99
+  },
+  {
+    "text": "Where can I download the invoice #37777?",
+    "intent": "get_invoice",
+    "category": "INVOICE",
+    "confidence": 0.97
+  },
+  {
+    "text": "Where to correct my shipping address?",
+    "intent": "change_shipping_address",
+    "category": "SHIPPING",
+    "confidence": 0.95
+  },
+  {
+    "text": "Can I see how soon can I expect my shipment?",
+    "intent": "delivery_period",
+    "category": "DELIVERY",
+    "confidence": 0.99
+  },
+  {
+    "text": "How to inform of payment errors?",
+    "intent": "payment_issue",
+    "category": "PAYMENT",
+    "confidence": 0.97
+  },
+  {
+    "text": "How could I check your money back policy?",
+    "intent": "check_refund_policy",
+    "category": "REFUND",
+    "confidence": 0.98
+  },
+  {
+    "text": "Could you help me to talk to a person?",
+    "intent": "contact_human_agent",
+    "category": "CONTACT",
+    "confidence": 0.88
+  }
+]

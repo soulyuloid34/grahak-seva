@@ -1,0 +1,11 @@
+Multi-Agent Customer Support System - Evaluation Summary
+============================================================
+
+Accuracy:  0.9682
+Precision: 0.9705
+Recall:    0.9682
+F1 Score:  0.9685
+
+Samples above confidence threshold: 4006/4031 (99.4%)
+Avg Intent Confidence: 0.8839
+Avg Response Confidence: 0.9404

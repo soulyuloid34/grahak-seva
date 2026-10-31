@@ -1,0 +1,11 @@
+{
+  "accuracy": 0.9682460927809476,
+  "precision": 0.9704983898411746,
+  "recall": 0.9682460927809476,
+  "f1_score": 0.9684606467391189,
+  "total_samples": 4031,
+  "above_threshold_count": 4006,
+  "above_threshold_percentage": 99.37980649962789,
+  "avg_intent_confidence": 0.8838769384647078,
+  "avg_response_confidence": 0.940384162166611
+}

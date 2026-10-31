@@ -1,0 +1,129 @@
+true,pred,dec,q
+set_up_shipping_address,change_shipping_address,CLARIFY,shipping address not valid
+get_invoice,check_invoice,CLARIFY,get inviice from {{Person Name}}
+check_payment_methods,payment_issue,CLARIFY,can uhelp me checking the payment optgions
+create_account,delete_account,CLARIFY,"I do not have a pro account yet, help me register"
+check_refund_policy,get_refund,CLARIFY,show ur money back policcy
+contact_customer_service,contact_human_agent,ANSWER,need to speak to customere assistance
+cancel_order,change_order,CLARIFY,cance order {{Order Number}}
+switch_account,delete_account,CLARIFY,changkng to {{Account Type}} account
+delete_account,switch_account,CLARIFY,"I never use the {{Account Type}} account, I need help canceling it"
+cancel_order,change_order,CLARIFY,I can't aford order {{Order Number}}
+cancel_order,place_order,CLARIFY,can you help me camceling the purchase I made?
+check_invoice,get_invoice,CLARIFY,I do not know how to find invoice #85632
+create_account,delete_account,CLARIFY,another {{Account Category}} account for father
+get_invoice,check_invoice,CLARIFY,get bills from {{Person Name}}
+switch_account,delete_account,CLARIFY,would it be possible to sitch to the bloody {{Account Type}} account
+cancel_order,change_order,CLARIFY,cance order {{Order Number}}
+contact_human_agent,check_invoice,CLARIFY,can you help me chatting with a person?
+get_invoice,check_invoice,CLARIFY,I do not knowwhat I need to do to get invoice #85632
+track_order,change_order,CLARIFY,I need assistance trackng purchase {{Order Number}}
+contact_human_agent,check_invoice,CLARIFY,how do i cyat with a person
+registration_problems,create_account,CLARIFY,issues creating account
+get_invoice,check_invoice,CLARIFY,how to get bill #85632
+set_up_shipping_address,change_shipping_address,CLARIFY,I need assistance enteirng another delivery address
+track_order,change_order,CLARIFY,where is order {{Order Number}}
+get_invoice,check_invoice,CLARIFY,where do I get invoice #00108?
+check_invoice,get_invoice,CLARIFY,I don't know what I ahve to do to see my bill from {{Person Name}}
+get_invoice,check_invoice,CLARIFY,can I get my bill #12588?
+get_invoice,check_invoice,CLARIFY,how to get the invoices from {{Person Name}}
+cancel_order,change_order,CLARIFY,I want help cancellkng purchase {{Order Number}}
+check_invoice,get_invoice,CLARIFY,where do I find the invoice from {{Person Name}}?
+track_order,change_order,ESCALATE,tracking order
+track_order,change_order,CLARIFY,can uhelp me locating order {{Order Number}}
+place_order,change_order,ESCALATE,how do I order somearticles?
+place_order,change_order,ESCALATE,where do I order something?
+get_invoice,check_invoice,CLARIFY,wanna get my bloody bll from {{Person Name}}
+create_account,delete_account,CLARIFY,openng {{Account Category}} account
+registration_problems,create_account,ANSWER,"I can't open an account, reportregistration issues"
+get_invoice,check_invoice,CLARIFY,want assistance to get my invoices from {{Person Name}}
+create_account,delete_account,CLARIFY,what do i have to do to createa premium account
+get_invoice,check_invoice,CLARIFY,i need assistance to get my invoices  from {{Person Name}}
+get_invoice,contact_human_agent,ESCALATE,get bill fromAnna Freeman
+place_order,change_order,ESCALATE,order anitem
+get_invoice,check_invoice,CLARIFY,I call to get my bill #37777
+cancel_order,change_order,CLARIFY,I need help with cancellng order {{Order Number}}
+track_order,change_order,CLARIFY,could ya help me locae purchase {{Order Number}}
+change_order,place_order,CLARIFY,i want help to swap several articles of order113542617735902
+newsletter_subscription,review,ESCALATE,assistance signing up to your company newxletter
+cancel_order,change_order,CLARIFY,cance order {{Order Number}}
+get_invoice,check_invoice,CLARIFY,how do i get my bills rfom {{Person Name}}
+track_order,change_order,CLARIFY,see order {{Order Number}} stats
+check_invoice,get_invoice,CLARIFY,i dont know what i have to do to find the invoice #00108
+delivery_period,delivery_options,CLARIFY,delivery period
+create_account,delete_account,CLARIFY,problem with creatingmy {{Account Type}} account
+newsletter_subscription,registration_problems,CLARIFY,where to sign up to the company nmewsletter
+change_order,edit_account,CLARIFY,modify order00004587345
+get_invoice,check_invoice,CLARIFY,help to get the bill #37777
+set_up_shipping_address,change_shipping_address,CLARIFY,"my delivery address is not valid, what should I do?"
+track_order,change_order,CLARIFY,locating order {{Order Number}}
+check_refund_policy,get_refund,CLARIFY,i have to see in what casescan i request a reimbursement
+switch_account,delete_account,CLARIFY,changkng to {{Account Type}} account
+get_invoice,check_invoice,CLARIFY,wanna get the invoice from {{Person Name}} help me
+get_invoice,check_invoice,CLARIFY,need assistance to get my invoice #85632
+cancel_order,change_order,CLARIFY,i do not know how i can canmcel order {{Order Number}}
+payment_issue,registration_problems,CLARIFY,need assistance reporting an issue with pyments
+track_order,change_order,CLARIFY,wanna see the statusof order {{Order Number}} i need help
+get_invoice,check_invoice,CLARIFY,get invoice #85632
+change_order,edit_account,CLARIFY,modify order370795561790
+registration_problems,contact_customer_service,ESCALATE,assistance signing up
+change_shipping_address,switch_account,ANSWER,I cannot change the addreas
+cancel_order,change_order,CLARIFY,i do not know how i could casncel order {{Order Number}}
+get_invoice,check_invoice,CLARIFY,get ibll #12588
+check_invoice,get_invoice,CLARIFY,I need help to find my invoice #12588
+newsletter_subscription,registration_problems,CLARIFY,help to sign up to your company newsleyter
+payment_issue,registration_problems,ESCALATE,i dont know how to inform of paymentissues
+track_refund,get_refund,CLARIFY,i exepct a compensation of {{Currency Symbol}}{{Refund Amount}}
+change_order,place_order,CLARIFY,wanna swap an item of order732201349959 i need help
+contact_human_agent,place_order,ESCALATE,I want assistance contacting someone
+track_order,change_order,CLARIFY,help locating purchase {{Order Number}}
+check_invoice,get_invoice,CLARIFY,I do not know what to do to see my invoice #37777
+get_invoice,check_invoice,CLARIFY,I'm calling to gt the bloody bills from {{Person Name}}
+edit_account,delete_account,CLARIFY,mldifying {{Account Category}} account
+get_invoice,check_invoice,CLARIFY,get invoice #37777
+cancel_order,change_order,CLARIFY,i cant pay for order {{Order Number}}
+get_refund,check_refund_policy,ESCALATE,is it possible to request rteimbursements
+contact_human_agent,check_invoice,CLARIFY,is it possible to speakto a person?
+switch_account,delete_account,CLARIFY,I don't know what I have to do to wsitch to the {{Account Type}} account
+change_order,edit_account,CLARIFY,modify order113542617735902
+create_account,delete_account,CLARIFY,creatingnew {{Account Type}} account
+contact_human_agent,check_invoice,CLARIFY,can you help me contacting a person?
+get_invoice,check_invoice,CLARIFY,get bill #00108
+contact_human_agent,check_invoice,CLARIFY,directing to person
+delivery_period,place_order,ESCALATE,I'm trying to find shpping period help me
+create_account,delete_account,CLARIFY,I want  a {{Account Category}} account
+switch_account,delete_account,CLARIFY,help me usew the freemium account
+cancel_order,change_order,CLARIFY,I can't pay for purchase {{Order Number}}
+get_invoice,check_invoice,CLARIFY,get bills from {{Person Name}}
+get_invoice,check_invoice,CLARIFY,how to get my bills from {{Person Name}}
+track_order,change_order,CLARIFY,see order {{Order Number}} stats
+track_order,change_order,CLARIFY,help me tracking order {{Order Number}}
+track_refund,get_refund,CLARIFY,I exxpect a rebate of {{Currency Symbol}}{{Refund Amount}}
+check_invoice,get_invoice,CLARIFY,what do I have to do to see my invoice from {{Person Name}}?
+contact_human_agent,check_invoice,CLARIFY,i want assistance contacting a person
+check_invoice,get_invoice,CLARIFY,i have to find my invoice #12588 how todo it
+get_invoice,contact_human_agent,ESCALATE,get bill fromDavid Miller
+switch_account,delete_account,CLARIFY,need help canging to the {{Account Category}} account
+check_payment_methods,delivery_options,CLARIFY,i do not know how i can see ur payhment options
+get_invoice,check_invoice,CLARIFY,help me to get my invoices from {{Person Name}}
+get_invoice,check_invoice,CLARIFY,how to get my bill #85632
+get_invoice,check_invoice,CLARIFY,i need assistance to get the invoice #85632
+create_account,delete_account,CLARIFY,another pro account
+get_invoice,check_invoice,CLARIFY,want assistance to get the invoice #00108
+payment_issue,registration_problems,CLARIFY,where can I notify of problems with payent?
+get_invoice,check_invoice,CLARIFY,get bill from {{Person Name}}
+get_invoice,check_invoice,CLARIFY,getbills from {{Person Name}}
+cancel_order,change_order,CLARIFY,can uhelp me cancelliung order {{Order Number}}
+set_up_shipping_address,change_shipping_address,CLARIFY,I have troubles submittng the shipping address
+set_up_shipping_address,change_shipping_address,CLARIFY,need to submut a delivery address
+check_invoice,get_invoice,CLARIFY,I am trying to find my invoices from {{Person Name}}
+contact_human_agent,place_order,ESCALATE,I want assistance seaking with someone
+get_invoice,check_invoice,CLARIFY,help to get my invoices from {{Person Name}}
+get_invoice,check_invoice,CLARIFY,get bill #37777
+check_payment_methods,delivery_options,ESCALATE,i want assistance checking what paytment methods ya accept
+change_shipping_address,delivery_options,ESCALATE,I chose a wrong delivery addreds
+get_invoice,check_invoice,CLARIFY,wanna get my bill from {{Person Name}}
+cancel_order,change_order,CLARIFY,I can't pay for purchase {{Order Number}}
+get_invoice,check_invoice,CLARIFY,gedtting bill from {{Person Name}}
+check_invoice,get_invoice,CLARIFY,"I have to see my invoice from {{Person Name}}, help me"
+track_order,change_order,CLARIFY,how can i tfack purchase {{Order Number}}

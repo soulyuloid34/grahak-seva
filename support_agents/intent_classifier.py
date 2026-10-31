@@ -13,7 +13,7 @@ class IntentClassifier:
     def __init__(self):
         self.pipeline = Pipeline([
             ('tfidf', TfidfVectorizer(max_features=500, stop_words='english', ngram_range=(1, 2))),
-            ('classifier', LogisticRegression(max_iter=200, random_state=42, multi_class='multinomial'))
+            ('classifier', LogisticRegression(max_iter=200, random_state=42, ))
         ])
         self.label_encoder = LabelEncoder()
         self.intents = None

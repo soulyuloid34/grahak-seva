@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Grahak Seva · Dashboard</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..900,0..100&family=Lobster+Two:ital,wght@1,400;1,700&display=swap">
+  <style>
+    @font-face {
+      font-family: "GS Display";
+      src: local("Briston"), local("Briston Regular"), url("fonts/Briston.woff2") format("woff2"), url("fonts/Briston.ttf") format("truetype")
+    }
+
+    @font-face {
+      font-family: "GS Body";
+      src: local("Harlow Solid Italic"), local("Harlow Solid"), local("HarlowSolid"), url("fonts/HarlowSolid.woff2") format("woff2"), url("fonts/HarlowSolid.ttf") format("truetype")
+    }
+
+    :root {
+      --blue: #c4dae8;
+      --butter: #feefb8;
+      --choco: #432f2e;
+      --bg: #fffbea;
+      --card: #fff;
+      --text: #432f2e;
+      --muted: #8a7776;
+      --border: #eadfd0;
+      --top: #432f2e;
+      --primary: #432f2e;
+      --on-primary: #feefb8;
+      --esc-bg: #432f2e;
+      --esc-fg: #feefb8;
+      --s1: #432f2e;
+      --f1: #c4dae8;
+      --s2: #9b8583;
+      --shadow: 0 1px 2px rgba(67, 47, 46, .06), 0 8px 24px rgba(67, 47, 46, .06);
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px)
+    }
+
+    @media (prefers-color-scheme:dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #241817;
+        --card: #2f2120;
+        --text: #feefb8;
+        --muted: #b9a98f;
+        --border: #4a3735;
+        --top: #1a1010;
+        --primary: #feefb8;
+        --on-primary: #432f2e;
+        --esc-bg: #5a3f3d;
+        --esc-fg: #feefb8;
+        --s1: #feefb8;
+        --f1: #c4dae8;
+        --s2: #c4dae8;
+        --shadow: none
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #241817;
+      --card: #2f2120;
+      --text: #feefb8;
+      --muted: #b9a98f;
+      --border: #4a3735;
+      --top: #1a1010;
+      --primary: #feefb8;
+      --on-primary: #432f2e;
+      --esc-bg: #5a3f3d;
+      --esc-fg: #feefb8;
+      --s1: #feefb8;
+      --f1: #c4dae8;
+      --s2: #c4dae8;
+      --shadow: none
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px)
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.5;
+      font-synthesis: none;
+      font-family: "GS Body", "Harlow Solid Italic", "Lobster Two", "Avenir Next", "Trebuchet MS", "Kohinoor Devanagari", "Kohinoor Bangla", "Kohinoor Tamil", "Kohinoor Telugu", "Noto Sans Devanagari", "Noto Sans Bengali", "Noto Sans Tamil", "Noto Sans Telugu", sans-serif
+    }
+
+    h1,
+    .brand,
+    .kpi .v {
+      font-family: "GS Display", Briston, "Fraunces", Georgia, serif;
+      font-variation-settings: "SOFT" 100
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+      color: inherit
+    }
+
+    .top {
+      border-bottom: 4px solid var(--sc, transparent);
+      background: var(--top);
+      color: var(--butter);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 12px 24px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 18px;
+      white-space: nowrap
+    }
+
+    .logo {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: var(--butter);
+      color: var(--choco);
+      font-size: 13px;
+      font-weight: 800
+    }
+
+    .search {
+      flex: 1;
+      display: flex;
+      max-width: 560px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: var(--butter)
+    }
+
+    .search input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      background: none;
+      padding: 10px 18px;
+      color: var(--choco);
+      outline: 0
+    }
+
+    .search input::placeholder {
+      color: #8a7776
+    }
+
+    .search button {
+      border: 0;
+      background: var(--blue);
+      color: var(--choco);
+      font-weight: 600;
+      padding: 0 20px;
+      cursor: pointer
+    }
+
+    .top nav {
+      display: flex;
+      gap: 4px;
+      margin-left: auto
+    }
+
+    .top nav a {
+      color: var(--butter);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 16px;
+      opacity: .8
+    }
+
+    .top nav a.on,
+    .top nav a:hover {
+      background: rgba(254, 239, 184, .14);
+      opacity: 1
+    }
+
+    .icon {
+      border: 1px solid rgba(254, 239, 184, .35);
+      background: none;
+      color: var(--butter);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--choco);
+      display: grid;
+      place-items: center;
+      font-weight: 700
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 24px 48px
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 22px
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -.02em
+    }
+
+    .sub {
+      margin: 4px 0 0;
+      color: var(--muted)
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform .12s, opacity .12s
+    }
+
+    .btn:hover {
+      transform: translateY(-1px)
+    }
+
+    a.btn {
+      text-decoration: none;
+      display: inline-block
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      color: var(--on-primary)
+    }
+
+    .btn.blue {
+      background: var(--blue);
+      color: var(--choco)
+    }
+
+    .btn.ghost {
+      background: none;
+      border: 1.5px solid var(--border);
+      color: var(--text)
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow)
+    }
+
+    .kpi .l {
+      font-size: 15px;
+      color: var(--muted)
+    }
+
+    .kpi .v {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin: 6px 0 8px
+    }
+
+    .chip {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: var(--choco)
+    }
+
+    .kpi.b {
+      background: var(--butter);
+      border-color: transparent;
+      color: var(--choco)
+    }
+
+    .kpi.u {
+      background: var(--blue);
+      border-color: transparent;
+      color: var(--choco)
+    }
+
+    .kpi.b .l,
+    .kpi.u .l {
+      color: rgba(67, 47, 46, .72)
+    }
+
+    .kpi.b .chip,
+    .kpi.u .chip {
+      background: var(--choco);
+      color: var(--butter)
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+      margin-top: 16px
+    }
+
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px
+    }
+
+    .head h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 400
+    }
+
+    select {
+      appearance: none;
+      border: 1.5px solid var(--border);
+      background: var(--card);
+      border-radius: 999px;
+      padding: 7px 16px;
+      cursor: pointer;
+      text-transform: capitalize
+    }
+
+    .legend {
+      display: flex;
+      gap: 16px;
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 4px
+    }
+
+    .legend i {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 2px;
+      margin-right: 6px
+    }
+
+    #chart {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      touch-action: pan-y
+    }
+
+    #chart svg {
+      display: block;
+      overflow: visible
+    }
+
+    .tl {
+      font-size: 14px;
+      fill: var(--muted)
+    }
+
+    .tl.on {
+      fill: var(--text);
+      font-weight: 700
+    }
+
+    #tip {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .1s;
+      background: var(--primary);
+      color: var(--on-primary);
+      border-radius: 10px;
+      padding: 8px 10px;
+      min-width: 160px;
+      font-size: 14px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
+      z-index: 2
+    }
+
+    #tip .r {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 4px
+    }
+
+    #tip .r i {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 2px;
+      margin-right: 6px
+    }
+
+    .intent {
+      margin-top: 14px
+    }
+
+    .intent .t {
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      margin-bottom: 6px
+    }
+
+    .bar {
+      height: 8px;
+      border-radius: 99px;
+      background: var(--border);
+      overflow: hidden
+    }
+
+    .bar b {
+      display: block;
+      height: 100%;
+      border-radius: 99px;
+      background: var(--blue)
+    }
+
+    .intent:nth-child(even) .bar b {
+      background: var(--butter)
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 10px 0 14px
+    }
+
+    .tab {
+      border: 1.5px solid var(--border);
+      background: none;
+      border-radius: 999px;
+      padding: 6px 16px;
+      cursor: pointer;
+      font-size: 16px
+    }
+
+    .tab.on {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--on-primary)
+    }
+
+    .scroll {
+      overflow-x: auto
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 620px
+    }
+
+    th {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--muted);
+      text-align: left;
+      padding: 8px 10px;
+      font-weight: 600
+    }
+
+    td {
+      padding: 13px 10px;
+      border-top: 1px solid var(--border);
+      font-size: 16px
+    }
+
+    .q {
+      font-weight: 500
+    }
+
+    .mono {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    .conf {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .conf .bar {
+      width: 70px
+    }
+
+    .conf .bar b {
+      background: var(--s1)
+    }
+
+    .badge {
+      font-size: 14px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 999px;
+      white-space: nowrap
+    }
+
+    .answered {
+      background: var(--blue);
+      color: var(--choco)
+    }
+
+    .clarify {
+      background: var(--butter);
+      color: var(--choco)
+    }
+
+    .escalated {
+      background: var(--esc-bg);
+      color: var(--esc-fg)
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center
+    }
+
+    @media(max-width:960px) {
+      .kpis {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .grid {
+        grid-template-columns: 1fr
+      }
+
+      .top nav {
+        display: none
+      }
+
+      .top {
+        flex-wrap: wrap
+      }
+
+      .search {
+        order: 3;
+        flex-basis: 100%;
+        max-width: none
+      }
+
+      .icon {
+        margin-left: auto
+      }
+    }
+
+    @media(max-width:520px) {
+      main {
+        padding: 20px 16px 40px
+      }
+
+      .kpis {
+        gap: 12px
+      }
+
+      .kpi .v {
+        font-size: 26px
+      }
+
+      .top {
+        padding: 12px 16px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="brand"><span class="logo">GS</span><span id="brandname">Grahak Seva</span></div>
+    <form class="search" onsubmit="return false"><input placeholder="Search queries, intents or orders"
+        aria-label="Search"><button>Search</button></form>
+    <nav><a class="on" href="#">Dashboard</a><a href="?page=query" target="_top" data-go="query" id="nav-chat">New
+        query</a></nav>
+    <button class="icon" id="theme" aria-label="Toggle theme">◐</button>
+    <div class="avatar" id="avatar">S</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1 id="hero-title">Welcome back</h1>
+        <p class="sub" id="sub">Here’s how your support agents are doing today.</p>
+      </div>
+      <div class="actions"><button class="btn ghost">Export</button><a class="btn primary" href="?page=query"
+          target="_top" data-go="query" id="btn-chat">+ New query</a></div>
+    </section>
+
+    <section class="kpis" id="kpis">
+      <div class="card kpi b">
+        <div class="l">Queries today</div>
+        <div class="v">1,284</div><span class="chip">+8.2%</span>
+      </div>
+      <div class="card kpi u">
+        <div class="l">Auto-resolved</div>
+        <div class="v">82%</div><span class="chip">+3.1 pts</span>
+      </div>
+      <div class="card kpi">
+        <div class="l">Escalated to humans</div>
+        <div class="v">96</div><span class="chip">−1.4%</span>
+      </div>
+      <div class="card kpi">
+        <div class="l">Avg. response time</div>
+        <div class="v">2.4 s</div><span class="chip">−0.3 s</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="head">
+          <h2 id="vol-title">Query volume</h2>
+          <select id="tf" aria-label="Timeframe">
+            <option value="weekly">weekly</option>
+            <option value="monthly">monthly</option>
+            <option value="yearly">yearly</option>
+          </select>
+        </div>
+        <div class="legend"><span><i style="background:var(--s1)"></i>Resolved by agents</span><span><i
+              style="background:var(--s2)"></i>Escalated</span></div>
+        <div id="chart">
+          <div id="tip"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="head">
+          <h2>Top intents</h2>
+        </div>
+        <div id="intents"></div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <div class="head">
+        <h2>Recent queries</h2><button class="btn blue">View all</button>
+      </div>
+      <div class="tabs" id="tabs"></div>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Customer query</th>
+              <th>Intent</th>
+              <th>Confidence</th>
+              <th>Action</th>
+              <th>When</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+    <p class="note">Sample data for the prototype. Connect the A1 and A2 agents to show live numbers.</p>
+  </main>
+
+  <script>
+    const $ = s => document.querySelector(s);
+    const G = window.GS_DATA || null;   // injected by ui.py from dashboard.json; null = show the demo numbers
+    function rng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296 } }
+    const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const TF = {
+      weekly: { n: 7, base: 230, seed: 3, lab: i => DAYS[i], tick: () => true, full: i => DAYS[i] + ", this week" },
+      monthly: { n: 30, base: 210, seed: 5, lab: i => String(i + 1), tick: i => i === 0 || (i + 1) % 5 === 0, full: i => "Day " + (i + 1) + ", this month" },
+      yearly: { n: 12, base: 4800, seed: 9, lab: i => MON[i], tick: () => true, full: i => MON[i] + ", this year" }
+    };
+    const DATA = {};
+    for (const k in TF) { const c = TF[k], r = rng(c.seed); DATA[k] = Array.from({ length: c.n }, (_, i) => { const v = c.base * (0.8 + 0.4 * r() + 0.15 * Math.sin(i / (c.n / 6))); return { r: Math.round(v), e: Math.round(v * (0.1 + 0.07 * r())) } }) }
+
+    // Real data: re-bucket the validation replay (no timestamps in the dataset, so batches instead of days)
+    if (G && G.replay && G.replay.length >= 28) {
+      for (const k in TF) delete TF[k]; for (const k in DATA) delete DATA[k];
+      const rp = G.replay, L = rp.length;
+      [7, 14, 28].forEach(n => {
+        const key = n + " batches", d = [];
+        for (let i = 0; i < n; i++) { const s = rp.slice(Math.floor(i * L / n), Math.floor((i + 1) * L / n)), r = s.reduce((x, y) => x + y, 0); d.push({ r: r, e: s.length - r }) }
+        DATA[key] = d;
+        TF[key] = { n: n, lab: i => String(i + 1), tick: i => n <= 14 || i === 0 || (i + 1) % 4 === 0, full: i => "Batch " + (i + 1) + " of " + n + " · " + (d[i].r + d[i].e) + " questions" };
+      });
+      $("#tf").innerHTML = Object.keys(TF).map(k => `<option value="${k}">${k}</option>`).join("");
+    }
+
+    function draw() {
+      const k = $("#tf").value, c = TF[k], d = DATA[k], wrap = $("#chart"), w = wrap.clientWidth || 600, h = 260, pl = 8, pr = 8, pt = 14, pb = 30;
+      const max = Math.max(...d.map(p => p.r)) * 1.12, X = i => pl + i * (w - pl - pr) / (c.n - 1), Y = v => pt + (1 - v / max) * (h - pt - pb);
+      const path = key => d.map((p, i) => (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(p[key]).toFixed(1)).join("");
+      const ticks = d.map((_, i) => i).filter(c.tick);
+      let g = "";
+      ticks.forEach(i => g += `<line x1="${X(i)}" x2="${X(i)}" y1="${pt}" y2="${h - pb}" stroke="var(--border)"/>`);
+      ticks.slice(0, -1).forEach((t, j) => { const m = (X(t) + X(ticks[j + 1])) / 2; g += `<line x1="${m}" x2="${m}" y1="${pt}" y2="${h - pb}" stroke="var(--border)" stroke-dasharray="5 5"/>` });
+      const labels = ticks.map(i => `<text class="tl" data-i="${i}" x="${X(i)}" y="${h - 8}" text-anchor="middle">${c.lab(i)}</text>`).join("");
+      wrap.querySelector("svg")?.remove();
+      wrap.insertAdjacentHTML("afterbegin", `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+    <defs><linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" style="stop-color:var(--f1);stop-opacity:.75"/><stop offset="95%" style="stop-color:var(--f1);stop-opacity:.08"/></linearGradient></defs>
+    ${g}<path d="${path("r")}L${X(c.n - 1)} ${h - pb}L${X(0)} ${h - pb}Z" fill="url(#gr)"/>
+    <path d="${path("r")}" fill="none" stroke="var(--s1)" stroke-width="2"/>
+    <path d="${path("e")}" fill="none" stroke="var(--s2)" stroke-width="1.75"/>
+    <line id="cur" y1="${pt}" y2="${h - pb}" stroke="var(--s1)" stroke-width="1.5" opacity="0"/>
+    <circle id="d1" r="4.5" fill="var(--card)" stroke="var(--s1)" stroke-width="2" opacity="0"/>
+    <circle id="d2" r="4.5" fill="var(--card)" stroke="var(--s2)" stroke-width="2" opacity="0"/>${labels}</svg>`);
+      const tip = $("#tip"), cur = $("#cur"), d1 = $("#d1"), d2 = $("#d2");
+      const off = () => { [cur, d1, d2].forEach(e => e.setAttribute("opacity", 0)); tip.style.opacity = 0; wrap.querySelectorAll(".tl").forEach(t => t.classList.remove("on")) };
+      wrap.onpointerleave = off;
+      wrap.onpointermove = e => {
+        const x = e.clientX - wrap.getBoundingClientRect().left;
+        const i = Math.max(0, Math.min(c.n - 1, Math.round((x - pl) / ((w - pl - pr) / (c.n - 1)))));
+        cur.setAttribute("x1", X(i)); cur.setAttribute("x2", X(i)); cur.setAttribute("opacity", 1);
+        d1.setAttribute("cx", X(i)); d1.setAttribute("cy", Y(d[i].r)); d1.setAttribute("opacity", 1);
+        d2.setAttribute("cx", X(i)); d2.setAttribute("cy", Y(d[i].e)); d2.setAttribute("opacity", 1);
+        tip.innerHTML = `<div style="opacity:.8">${c.full(i)}</div><div class="r"><span><i style="background:var(--blue)"></i>Resolved</span><b>${d[i].r.toLocaleString()}</b></div><div class="r"><span><i style="background:var(--butter)"></i>Escalated</span><b>${d[i].e.toLocaleString()}</b></div>`;
+        tip.style.left = Math.max(0, Math.min(w - 160, X(i) + 14)) + "px"; tip.style.top = "8px"; tip.style.opacity = 1;
+        wrap.querySelectorAll(".tl").forEach(t => t.classList.toggle("on", +t.dataset.i === i));
+      };
+    }
+    $("#tf").onchange = draw; addEventListener("resize", draw);
+
+    const INTENTS_DEMO = [["Refund requests", 412], ["Track order", 368], ["Cancel order", 301], ["Invoices", 254], ["Delivery period", 189], ["Delete account", 143]];
+    const INTENTS = (G && G.top_intents && G.top_intents.length) ? G.top_intents : INTENTS_DEMO;
+    $("#intents").innerHTML = INTENTS.map(([n, v]) => `<div class="intent"><div class="t"><span>${n}</span><b>${v}</b></div><div class="bar"><b style="width:${v / INTENTS[0][1] * 100}%"></b></div></div>`).join("");
+
+    const ROWS_DEMO = [["How can I request a refund for my purchase?", "get_refund", .94, "answered", "2 min ago"],
+    ["where is my package??", "track_order", .88, "answered", "6 min ago"],
+    ["I have a problem with my stuff", "unclear", .21, "clarify", "9 min ago"],
+    ["I need to delete my freemium account", "delete_account", .91, "answered", "14 min ago"],
+    ["What is the weather like in Paris today?", "out of scope", .07, "escalated", "18 min ago"],
+    ["seeing invoice #85632, need a copy", "get_invoice", .83, "answered", "25 min ago"],
+    ["payment failed twice and I was charged", "payment_issue", .46, "escalated", "31 min ago"]];
+    const ROWS = (G && G.recent && G.recent.length) ? G.recent : ROWS_DEMO;
+    const I18 = window.GS_I18N || {};
+    const LABEL = { answered: I18["Answered"] || "Answered", clarify: I18["Clarify"] || "Clarify", escalated: I18["Escalated"] || "Escalated" };
+    let filter = "all";
+    function rows() {
+      $("#tabs").innerHTML = ["all", "answered", "clarify", "escalated"].map(t => `<button class="tab ${t === filter ? "on" : ""}" data-t="${t}">${t === "all" ? (I18["All"] || "All") : LABEL[t]}</button>`).join("");
+      $("#rows").innerHTML = ROWS.filter(r => filter === "all" || r[3] === filter).map(r => `<tr><td class="q">${r[0]}</td><td class="mono">${r[1]}</td><td><div class="conf"><div class="bar"><b style="width:${r[2] * 100}%"></b></div>${r[2].toFixed(2)}</div></td><td><span class="badge ${r[3]}">${LABEL[r[3]]}</span></td><td class="mono">${r[4]}</td></tr>`).join("");
+    }
+    $("#tabs").onclick = e => { const t = e.target.dataset.t; if (t) { filter = t; rows() } };
+    $("#theme").onclick = () => { const r = document.documentElement, dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme:dark)").matches; r.dataset.theme = dark ? "light" : "dark"; draw() };
+    function applyData() {
+      if (!G) return;
+      if (G.kpis) $("#kpis").innerHTML = G.kpis.map(k => `<div class="card kpi ${k.style || ""}"><div class="l">${k.label}</div><div class="v">${k.value}</div><span class="chip">${k.chip}</span></div>`).join("");
+      if (G.subtitle) $("#sub").textContent = G.subtitle;
+      if (G.note) $(".note").textContent = G.note;
+      if (G.replay) $("#vol-title").textContent = I18["Validation replay"] || "Validation replay";
+      if (G.store) {   // one dashboard per store (sidebar in ui.py picks which)
+        const S = G.store;
+        document.documentElement.style.setProperty("--sc", S.color);
+        const L = G.labels || {};
+        $("#brandname").textContent = L.brand || ("Grahak Seva · " + S.name);
+        $("#hero-title").textContent = L.title || (S.name + " support dashboard");
+        $("#nav-chat").textContent = L.chat || ("Chat with " + S.name);
+        $("#btn-chat").textContent = (L.chat || ("Chat with " + S.name)) + " →";
+        const av = $("#avatar"); av.textContent = S.initials; av.style.background = S.color; av.style.color = "#fff";
+        document.title = S.name + " · Grahak Seva";
+      }
+    }
+    applyData();
+    rows(); draw();
+    // language: swap the remaining fixed labels for the selected language (dictionary comes from ui.py)
+    function applyI18N() {
+      if (!Object.keys(I18).length) return;
+      const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), nodes = [];
+      while (w.nextNode()) nodes.push(w.currentNode);
+      nodes.forEach(n => { const t = n.nodeValue.trim(); if (t && I18[t]) n.nodeValue = n.nodeValue.replace(t, I18[t]) });
+      document.querySelectorAll("[placeholder],[aria-label]").forEach(e => { ["placeholder", "aria-label"].forEach(a => { const t = e.getAttribute(a); if (t && I18[t]) e.setAttribute(a, I18[t]) }) });
+    }
+    applyI18N();
+    // Open the query page inside the same Streamlit session (no reload) by clicking its hidden button.
+    function helper(n) { try { return [...parent.document.querySelectorAll("button")].find(b => b.textContent.trim() === n) || null } catch (e) { return null } }
+    function hideHelpers() { ["gs-go-home", "gs-go-query"].forEach(n => { const b = helper(n); if (b) { const c = b.closest('[data-testid="stElementContainer"]') || b; c.style.display = "none" } }) }
+    document.addEventListener("click", e => { const a = e.target.closest("a[data-go]"); if (!a) return; const b = helper("gs-go-" + a.dataset.go); if (b) { e.preventDefault(); b.click() } });
+    hideHelpers(); setTimeout(hideHelpers, 300); setTimeout(hideHelpers, 1200);
+    function fit() { try { const f = window.frameElement; if (f) f.style.height = Math.ceil(document.body.getBoundingClientRect().height) + "px" } catch (e) { } }
+    addEventListener("load", fit); addEventListener("resize", fit);
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(document.body);
+    fit();
+  </script>
+</body>
+
+</html>

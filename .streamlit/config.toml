@@ -1,0 +1,13 @@
+# Put this at  <folder you run streamlit from>/.streamlit/config.toml
+# It forces the light theme so tables, sliders and the popover are not drawn dark
+# (the app followed your macOS dark mode, which is why the widgets came out dark navy).
+[theme]
+base = "light"
+primaryColor = "#432f2e"
+backgroundColor = "#fffbea"
+secondaryBackgroundColor = "#f6efd6"
+textColor = "#432f2e"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false
